@@ -57,7 +57,7 @@ void runHistogram(Mat* img)
 	// auto stop = high_resolution_clock::now();
 	gettimeofday(&tvalAfter, NULL);
 
-	/*for (int i = 0; i < COLORS; i++)
+	/*for (int i = 0; i < 256; i++)
 		printf("%d\n", histogram[i]);*/
 
 	/*auto duration = duration_cast<microseconds>(stop - start);
