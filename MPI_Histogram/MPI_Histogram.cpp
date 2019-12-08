@@ -10,7 +10,7 @@
 using namespace std;
 using namespace cv;
 
-
+// function to read in an image and its dimensions
 void read_Image(Mat& _picture, char* _argv[], int& x, int& y)
 {
 	_picture = imread(_argv[1], IMREAD_COLOR);
@@ -40,17 +40,17 @@ int main(int argc, char* argv[])
 		histogram[i] = 0;
 	}
 
-	read_Image(picture, argv, width, height);
-	totPixel = width * height;
+	read_Image(picture, argv, width, height);		// Reads in specified image
+	totPixel = width * height;						// Calculates total number of pixels in image
 	
-	cvtColor(picture, pictureG, COLOR_BGR2GRAY);	
+	cvtColor(picture, pictureG, COLOR_BGR2GRAY);	// Converts images to grayscale
 	
 	MPI_Init(&argc, &argv);
 
 	comm = MPI_COMM_WORLD;
 	MPI_Comm_rank(comm, &process_ID);
 	
-	
+	// Prompt User
 	cout << "Choose an option" << endl;
 	cout << "1.) Image Histogram" << endl;
 	cout << "2.) Generated Histogram" << endl;
@@ -64,10 +64,10 @@ int main(int argc, char* argv[])
 		cout << "Enter Height Dimension" << endl;
 		cin >> genHeight;
 		*/
-		genWidth = 30000;
-		genHeight = 16875;
+		genWidth = 3840;								// Dimension sizes of the simulated image
+		genHeight = 2160;
 	
-		genPixels = genWidth * genHeight;
+		genPixels = genWidth * genHeight;				// Calculate total number of pixels
 	
 	
 		vector<int> genData;
@@ -79,9 +79,9 @@ int main(int argc, char* argv[])
 		}
 		int index = 0;
 		
-		start = clock();
+		start = clock();								// start timer 
 		
-		for(int count = 0; count < genHeight; count++)
+		for(int count = 0; count < genHeight; count++)	// Calculate histogram of data
 			for(int ind = 0; ind < genWidth; ind++)
 			{	
 				histogram[genData[index]]++;
@@ -90,8 +90,8 @@ int main(int argc, char* argv[])
 	}
 	else if(option == 1)
 	{
-		start = clock();
-		for(int y = 0; y < picture.rows; y++)
+		start = clock();								// start timer
+		for(int y = 0; y < picture.rows; y++)			// Calculate histogram of image
 			for(int x = 0; x < picture.cols; x++)
 				histogram[(int)picture.at<uchar>(y,x)]++;
 	}
@@ -102,12 +102,13 @@ int main(int argc, char* argv[])
 	}
 	
 	
-	stop = clock();
+	stop = clock();										// stop timer
 	MPI_Barrier(MPI_COMM_WORLD);
 	
 	totTime = double(stop - time)/double(CLOCKS_PER_SEC);
 	totTime = totTime * 10000;
-	
+
+	// Print stats
 	for(int i = 0; i < 256; i++)
 		cout<< "intensity value: " << i << "\tconcentration: " << histogram[i]<< endl;
 	
