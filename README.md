@@ -5,12 +5,15 @@ First, download the CMakeList.txt and the sequential.cpp file. Upload these file
 
 Open up the CMakeList.txt file and update the add_executable argument in line 6  to point to the directory where you stored the sequential.cpp file. You do not need to change the Sequential name.
 
-Now Open up a command prompt and ssh into heracles and sign in. Use ssh node18 to access node 18.
+Now Open up a command prompt and ssh into heracles and sign in. Use 
+
+	ssh node18 
+to access node 18.
 
 Navigate to the directory where both files are stored. Once there, run the commands
 
-cmake CMakeLists.txt
-make
+	cmake CMakeLists.txt
+	make
 
 Now the program is ready to be ran.
   	
@@ -22,12 +25,15 @@ First, download the CMakeList.txt and the CUDA.cu file. Upload these files to th
 
 Open up the CMakeList.txt file and update the add_executable argument in line 10  to point to the directory where you stored the CUDA.cu file. You do not need to change the CudaImageHistogram name.
 
-Now Open up a command prompt and ssh into heracles and sign in. Use ssh node18 to access node 18.
+Now Open up a command prompt and ssh into heracles and sign in. Use 
+
+	ssh node18 
+to access node 18.
 
 Navigate to the directory where both files are stored. Once there, run the commands
 
-cmake CMakeLists.txt
-make
+	cmake CMakeLists.txt
+	make
 
 Now the program is ready to be ran.
   	
@@ -39,16 +45,21 @@ First download the CMakeList.txt and the OpenMP.cpp files. Upload these files to
 
 Open up the CMakeList.txt file and update the add_executable argument in line 12 to point to the directory where you storedthe OpenMP.cpp file. You do not need to change the DisplayImage name.
 
-Now Open up a command prompt and ssh into heracles and sign in. Use ssh node18 to access node 18.
+Now Open up a command prompt and ssh into heracles and sign in. Use 
+
+	ssh node18 
+to access node 18.
 
 Navigate to the directory where both files are stored. Once there, run the commands
 
-cmake CMakeLists.txt
-make
+	cmake CMakeLists.txt
+	make
 
 Now the program is ready to be ran.
 
-Input: ./DisplayImage <Row> <Col>
+Input: 
+
+	./DisplayImage <Row> <Col>
 
 Where Row and Col are your desired dimensions for an image.
 
@@ -58,13 +69,19 @@ First download the CMakeList.txt and the MPI_Histogram.cpp files. Upload these f
 
 Open up the CMakeList.txt file and update the add_executable argument in line 12 to point to the directory where you stored the MPI_Histogram.cpp file. 
 
-Now Open up a command prompt and ssh into heracles and sign in. Use “ssh node18” to access node 18.
+Now Open up a command prompt and ssh into heracles and sign in. Use 
+
+	ssh node18 
+	
+to access node 18.
 
 Navigate to the directory where both files are stored. Once there, run the commands
 
-cmake .
-make
+	cmake
+	make
 
 Now the program is ready to be ran.
 
-Input: ./MPI_Histogram “image_name”
+Input: 
+	
+	./MPI_Histogram <image_name>
